@@ -98,7 +98,7 @@ fun LemonadeWithTextImgAndBtn(modifier: Modifier = Modifier) {
                             etat = etat + 1
                         }
                     }
-                    .padding(19.dp),
+                    .padding(17.dp),
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(text = stringResource(textDescription))
