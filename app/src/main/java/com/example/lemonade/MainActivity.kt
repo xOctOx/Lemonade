@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.example.lemonade.ui.theme.LemonadeTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -48,9 +49,13 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun LemonadeApp() {
+
+    // Conteneur principal
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
+
+        // Barre de titre
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -64,6 +69,8 @@ fun LemonadeApp() {
                 fontWeight = FontWeight.Bold
             )
         }
+
+        // Affiche le contenu principal
         LemonadeWithTextImgAndBtn(
             Modifier
                 .fillMaxSize()
@@ -74,8 +81,11 @@ fun LemonadeApp() {
 
 @Composable
 fun LemonadeWithTextImgAndBtn(modifier: Modifier = Modifier) {
+
+    // État actuel de l'application
     var etat by remember { mutableStateOf(1) }
 
+    // Choisit l'image selon l'état
     val images = when (etat) {
         1 -> R.drawable.lemon_tree
         2 -> R.drawable.lemon_squeeze
@@ -84,6 +94,7 @@ fun LemonadeWithTextImgAndBtn(modifier: Modifier = Modifier) {
         else -> R.drawable.lemon_tree
     }
 
+    // Choisit le texte selon l'état
     val textDescription = when (etat) {
         1 -> R.string.lemon_select
         2 -> R.string.lemon_squeeze
@@ -92,6 +103,7 @@ fun LemonadeWithTextImgAndBtn(modifier: Modifier = Modifier) {
         else -> R.string.lemon_select
     }
 
+    // Choisit la description de l'image
     val imageContentDescription = when (etat) {
         1 -> R.string.lemon_tree_content_description
         2 -> R.string.lemon_content_description
@@ -100,10 +112,12 @@ fun LemonadeWithTextImgAndBtn(modifier: Modifier = Modifier) {
         else -> R.string.lemon_tree_content_description
     }
 
+    // Centre les éléments
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
+        // Affiche l'image
         Image(
             painter = painterResource(images),
             contentDescription = stringResource(imageContentDescription),
@@ -111,6 +125,7 @@ fun LemonadeWithTextImgAndBtn(modifier: Modifier = Modifier) {
                 .clip(RoundedCornerShape(16.dp))
                 .background(Color(0xFFC3ECD2))
                 .clickable {
+                    // Passe à l'étape suivante
                     if (etat == 4) {
                         etat = 1
                     } else {
@@ -119,7 +134,12 @@ fun LemonadeWithTextImgAndBtn(modifier: Modifier = Modifier) {
                 }
                 .padding(17.dp),
         )
+
+        // Ajoute un espace
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = stringResource(textDescription))
+        // Affiche le texte
+        Text(
+            text = stringResource(textDescription)
+        )
     }
 }
