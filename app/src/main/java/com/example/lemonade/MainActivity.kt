@@ -30,13 +30,13 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun LemonadeApp() {
-    LemondeWithTextImgAndBtn(Modifier
+    LemonadeWithTextImgAndBtn(Modifier
         .fillMaxSize()
         .wrapContentSize(Alignment.Center)
     )
 }
 
 @Composable
-fun LemondeWithTextImgAndBtn (modifier: Modifier = Modifier){
+fun LemonadeWithTextImgAndBtn (modifier: Modifier = Modifier){
 
 }
